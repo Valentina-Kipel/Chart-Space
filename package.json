@@ -1,0 +1,22 @@
+{
+  "name": "chart-space",
+  "version": "1.0.0",
+  "description": "Project for creating dynamic charts and graphs.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Valentina-Kipel/Chart-Space.git"
+  },
+  "author": "Valentina Kipel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Valentina-Kipel/Chart-Space/issues"
+  },
+  "homepage": "https://github.com/Valentina-Kipel/Chart-Space#readme",
+  "dependencies": {
+    "firebase": "^10.11.0"
+  }
+}
