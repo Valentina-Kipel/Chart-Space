@@ -17,6 +17,11 @@
   },
   "homepage": "https://github.com/Valentina-Kipel/Chart-Space#readme",
   "dependencies": {
-    "firebase": "^10.11.0"
+    "bootstrap": "^5.3.3",
+    "firebase": "^10.11.0",
+    "jquery": "^3.7.1"
+  },
+  "devDependencies": {
+    "webpack": "^5.91.0"
   }
 }
