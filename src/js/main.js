@@ -1,9 +1,13 @@
-// Import our custom CSS
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 import '../scss/styles.scss';
-import './some-module';
+import './auth';
+import { initLoginPage, setAuthChecker } from './auth';
 
-function test() {
-  console.log('webpack build works fine!');
+export function initApplication() {
+  setAuthChecker();
+  if (/login\.html$/.test(window.location.href)) {
+    initLoginPage();
+  }
 }
 
-window.test = test;
+initApplication();

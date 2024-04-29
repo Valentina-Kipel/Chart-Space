@@ -4,7 +4,20 @@
   <meta charset="utf-8" />
   <title>Login</title>
 </head>
-<body>
-  Some login
+<body class="d-flex align-items-center py-4 bg-body-tertiary">
+  <main class="form-signin w-100 m-auto">
+    <form id="signUpForm">
+      <h1 class="h3 mb-3 fw-normal">Please sign up</h1>
+      <div class="form-floating">
+        <input type="email" class="form-control" id="userEmail" placeholder="name@example.com">
+        <label for="userEmail">Email address</label>
+      </div>
+      <div class="form-floating">
+        <input type="password" class="form-control" id="userPassword" placeholder="Password">
+        <label for="userPassword">Password</label>
+      </div>
+      <button class="btn btn-primary w-100 py-2" type="submit">Sign up</button>
+    </form>
+  </main>
 </body>
 </html>
