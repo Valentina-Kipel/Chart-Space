@@ -41,3 +41,21 @@ export function initLoginPage() {
     await signUp(userEmail, userPassword);
   });
 }
+  export function initLoginPage() {
+    const form = document.getElementById('signInForm');
+  
+    form.addEventListener('submit', async function (event) {
+      event.preventDefault();
+  
+      const userEmail = document.getElementById('userEmail').value;
+      const userPassword = document.getElementById('userPassword').value;
+  
+      if (!userEmail || !userPassword) {
+        alert('Please fill in both email and password.');
+        return;
+      }
+  
+      await signIn(userEmail, userPassword);
+    });
+  }
+
