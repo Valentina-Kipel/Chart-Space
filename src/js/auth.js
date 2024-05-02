@@ -8,8 +8,8 @@ import { getApplicationAuth } from './config/firebase';
 export function setAuthChecker() {
   const auth = getApplicationAuth();
   onAuthStateChanged(auth, (authUser) => {
-    if (!authUser && !/login\.html$/.test(window.location.href)) {
-      window.location.href = '/login.html';
+    if (!authUser && !/login_sign_in\.html$/.test(window.location.href)) {
+      window.location.href = '/login_sign_in.html';
     }
   });
 }

@@ -5,7 +5,7 @@ import { initLoginPage, setAuthChecker } from './auth';
 
 export function initApplication() {
   setAuthChecker();
-  if (/login\.html$/.test(window.location.href)) {
+  if (/login_sign_in\.html$/.test(window.location.href)) {
     initLoginPage();
   }
 }
