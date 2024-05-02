@@ -1,12 +1,25 @@
 import 'bootstrap/dist/js/bootstrap.bundle.min';
+import {
+  initSignInPage,
+  initSignOutButton,
+  initSignUpPage,
+  setAuthChecker
+} from './auth';
 import '../scss/styles.scss';
-import './auth';
-import { initLoginPage, setAuthChecker } from './auth';
 
-export function initApplication() {
+function initMainPage() {
+  initSignOutButton();
+}
+
+function initApplication() {
   setAuthChecker();
-  if (/login_sign_in\.html$/.test(window.location.href)) {
-    initLoginPage();
+
+  if (/sign-in\.html$/.test(window.location.href)) {
+    initSignInPage();
+  } else if (/sign-up\.html$/.test(window.location.href)) {
+    initSignUpPage();
+  } else {
+    initMainPage();
   }
 }
 

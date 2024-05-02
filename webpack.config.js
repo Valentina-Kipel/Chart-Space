@@ -22,12 +22,12 @@ module.exports = {
       filename: 'index.html'
     }),
     new HtmlWebpackPlugin({
-      template: './src/login_sign_up.html', 
-      filename: 'login_sign_up.html'
+      template: './src/sign-up.html',
+      filename: 'sign-up.html'
     }),
     new HtmlWebpackPlugin({
-      template: './src/login_sign_in.html',
-      filename: 'login_sign_in.html'
+      template: './src/sign-in.html',
+      filename: 'sign-in.html'
     })
   ],
   module: {
