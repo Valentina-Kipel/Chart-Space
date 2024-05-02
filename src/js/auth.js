@@ -41,7 +41,7 @@ export function initLoginPage() {
     await signUp(userEmail, userPassword);
   });
 }
-  export function initLoginPage() {
+  export function initMainPage() {
     const form = document.getElementById('signInForm');
   
     form.addEventListener('submit', async function (event) {

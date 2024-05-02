@@ -18,15 +18,15 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/scss/index.html',
+      template: './src/index.html',
       filename: 'index.html'
     }),
     new HtmlWebpackPlugin({
-      template: './src/scss/login_sign_up.html',
+      template: './src/login_sign_up.html', 
       filename: 'login_sign_up.html'
     }),
     new HtmlWebpackPlugin({
-      template: './src/scss/login_sign_in.html',
+      template: './src/login_sign_in.html',
       filename: 'login_sign_in.html'
     })
   ],
