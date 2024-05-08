@@ -28,7 +28,11 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/sign-in.html',
       filename: 'sign-in.html'
-    })
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/charts.html',
+      filename: 'charts.html'
+    }),
   ],
   module: {
     rules: [
