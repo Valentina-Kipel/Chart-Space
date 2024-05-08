@@ -5,19 +5,24 @@ import {
   initSignUpPage,
   setAuthChecker
 } from './auth';
+import {initAddChartPage, initGetChartsPage} from './charts';
 import '../scss/styles.scss';
 
 function initMainPage() {
   initSignOutButton();
 }
 
-function initApplication() {
+async function initApplication() {
   setAuthChecker();
 
-  if (/sign-in\.html$/.test(window.location.href)) {
+  if (/sign-in\.html/.test(window.location.href)) {
     initSignInPage();
-  } else if (/sign-up\.html$/.test(window.location.href)) {
+  } else if (/sign-up\.html/.test(window.location.href)) {
     initSignUpPage();
+  } else if (/charts\.html/.test(window.location.href)) {
+    await initGetChartsPage();
+  } else if (/add-chart\.html/.test(window.location.href)) {
+    await initAddChartPage();
   } else {
     initMainPage();
   }

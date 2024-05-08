@@ -28,6 +28,10 @@ export function setAuthChecker() {
   onAuthStateChanged(auth, (authUser) => {
     if (!authUser && !isLoginPage()) {
       window.location.href = '/sign-in.html';
+    } else if (authUser) {
+      if (!localStorage.getItem('appUserId')) {
+        localStorage.setItem('appUserId', authUser.uid)
+      }
     }
   });
 }

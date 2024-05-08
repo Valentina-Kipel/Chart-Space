@@ -67,92 +67,11 @@
                                       <th scope="col">Chart Name</th>
                                       <th scope="col" class="text-center">Chart type</th>
                                       <th scope="col" class="text-center">View Chart</th>
-                                      <th scope="col">Date Created</th>                                      
+                                      <th scope="col">Date Created</th>
                                       <th scope="col">&nbsp;</th>
                                   </tr>
                               </thead>
-                              <tbody>
-                                  <tr>
-                                      <th scope="row">
-                                          <input type="checkbox" aria-label="Checkbox">
-                                      </th>
-                                      <td class="tm-product-name">1. In malesuada placerat (hover)</td>
-                                      <td class="text-center">&nbsp;</td>
-                                      <td class="text-center">&nbsp;</td>
-                                      <td>2018-10-28</td>
-                                      <td><i class="fas fa-trash-alt tm-trash-icon"></i></td>
-                                  </tr>
-                                  <tr>
-                                      <th scope="row">
-                                          <input type="checkbox" aria-label="Checkbox">
-                                      </th>
-                                      <td class="tm-product-name">2. Aenean eget urna enim. Sed enim</td>
-                                      <td class="text-center">&nbsp;</td>
-                                      <td class="text-center">&nbsp;</td>
-                                      <td>2018-10-24</td>
-                                      <td><i class="fas fa-trash-alt tm-trash-icon"></i></td>
-                                  </tr>
-                                  <tr>
-                                      <th scope="row">
-                                          <input type="checkbox" aria-label="Checkbox">
-                                      </th>
-                                      <td class="tm-product-name">3. Vivamus convallis tincidunt nisi</td>
-                                      <td class="text-center">&nbsp;</td>
-                                      <td class="text-center">&nbsp;</td>
-                                      <td>2019-02-14</td>
-                                      <td><i class="fas fa-trash-alt tm-trash-icon"></i></td>
-                                  </tr>
-                                  <tr>
-                                      <th scope="row">
-                                          <input type="checkbox" aria-label="Checkbox">
-                                      </th>
-                                      <td class="tm-product-name">4. Donec semper massa eget</td>
-                                      <td class="text-center">&nbsp;</td>
-                                      <td class="text-center">&nbsp;</td>
-                                      <td>2019-03-22</td>
-                                      <td><i class="fas fa-trash-alt tm-trash-icon"></i></td>
-                                  </tr>
-                                  <tr>
-                                      <th scope="row">
-                                          <input type="checkbox" aria-label="Checkbox">
-                                      </th>
-                                      <td class="tm-product-name">5. Donec semper massa eget</td>
-                                      <td class="text-center">&nbsp;</td>
-                                      <td class="text-center">&nbsp;</td>
-                                      <td>2019-03-22</td>
-                                      <td><i class="fas fa-trash-alt tm-trash-icon"></i></td>
-                                  </tr>
-                                  <tr>
-                                      <th scope="row">
-                                          <input type="checkbox" aria-label="Checkbox">
-                                      </th>
-                                      <td class="tm-product-name">6. Donec semper massa eget</td>
-                                      <td class="text-center">&nbsp;</td>
-                                      <td class="text-center">&nbsp;</td>
-                                      <td>2019-03-22</td>
-                                      <td><i class="fas fa-trash-alt tm-trash-icon"></i></td>
-                                  </tr>
-                                  <tr>
-                                      <th scope="row">
-                                          <input type="checkbox" aria-label="Checkbox">
-                                      </th>
-                                      <td class="tm-product-name">7. Donec semper massa eget</td>
-                                      <td class="text-center">&nbsp;</td>
-                                      <td class="text-center">&nbsp;</td>
-                                      <td>2019-03-22</td>
-                                      <td><i class="fas fa-trash-alt tm-trash-icon"></i></td>
-                                  </tr>
-                                  <tr>
-                                      <th scope="row">
-                                          <input type="checkbox" aria-label="Checkbox">
-                                      </th>
-                                      <td class="tm-product-name">8. Donec semper massa eget</td>
-                                      <td class="text-center">&nbsp;</td>
-                                      <td class="text-center">&nbsp;</td>
-                                      <td>2019-03-22</td>
-                                      <td><i class="fas fa-trash-alt tm-trash-icon"></i></td>
-                                  </tr>
-                              </tbody>
+                              <tbody id="chartListBody"></tbody>
                           </table>
                       </div>
 
@@ -237,17 +156,6 @@
           </footer>
       </div>
   </div>
-  <script src="js/jquery-3.3.1.min.js"></script>
-  <!-- https://jquery.com/download/ -->
-  <script src="js/bootstrap.min.js"></script>
-  <!-- https://getbootstrap.com/ -->
-  <script>
-      $(function () {
-          $('.tm-product-name').on('click', function () {
-              window.location.href = "edit-product.html";
-          });
-      })
-  </script>
 </body>
 
 </html>

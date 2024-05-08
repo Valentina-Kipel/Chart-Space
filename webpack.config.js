@@ -33,6 +33,10 @@ module.exports = {
       template: './src/charts.html',
       filename: 'charts.html'
     }),
+    new HtmlWebpackPlugin({
+      template: './src/add-chart.html',
+      filename: 'add-chart.html'
+    }),
   ],
   module: {
     rules: [

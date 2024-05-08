@@ -1,4 +1,6 @@
 import { initializeApp } from 'firebase/app';
+import { getFirestore } from 'firebase/firestore';
+import { getStorage } from 'firebase/storage';
 import { getAuth } from 'firebase/auth';
 
 let firebaseApp = undefined;
@@ -27,4 +29,16 @@ export function getApplicationAuth() {
   const firebaseApp = getFirebaseApp();
 
   return getAuth(firebaseApp);
+}
+
+export function getApplicationFirestore() {
+  const firebaseApp = getFirebaseApp();
+
+  return getFirestore(firebaseApp);
+}
+
+export function getApplicationStorage() {
+  const firebaseApp = getFirebaseApp();
+
+  return getStorage(firebaseApp);
 }
