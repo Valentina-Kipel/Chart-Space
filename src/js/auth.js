@@ -100,5 +100,6 @@ export function initSignOutButton() {
     event.preventDefault();
     const auth = getApplicationAuth();
     await signOut(auth);
+    localStorage.delete('appUserId');
   });
 }
