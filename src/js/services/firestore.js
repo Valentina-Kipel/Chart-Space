@@ -69,8 +69,7 @@ export async function createChart(
   chartName,
   chartType,
   chartDescription,
-  fileName,
-  fileLink
+  fileName
 ) {
   const id = uuidV4();
   const newChartRef = getChartDocRef(id);
@@ -80,7 +79,6 @@ export async function createChart(
     chartType,
     chartDescription,
     fileName,
-    fileLink,
     createdAt: new Date(),
     updatedAt: new Date(),
   }

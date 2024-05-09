@@ -1,4 +1,5 @@
 import {createChart, deleteChart, getCharts} from '../services/firestore';
+import {uploadCsv} from "../services/storage";
 
 export async function loadCharts() {
   const tableBody = document.getElementById('chartListBody');
@@ -54,20 +55,20 @@ export function initAddChartPage() {
     const chartName = document.getElementById('chartName').value;
     const chartDescription = document.getElementById('chartDescription').value;
     const chartType = document.getElementById('chartType').value;
-    const fakeFileName = 'test.txt';
-    const fakeFileLink = 'path/to/test.txt';
+    const csvFileInput = document.getElementById('csvFile');
+    const csvFile = csvFileInput.files[0];
 
-    if (!chartName || !chartDescription || !chartType || !fakeFileName || !fakeFileLink) {
+    if (!chartName || !chartDescription || !chartType || !csvFile) {
       alert('Please fill chartName, chartDescription, chartType and file.');
       return;
     }
 
+    const fileName = await uploadCsv(localStorage.getItem('appUserId'), csvFile);
     await createChart(
       chartName,
       chartType,
       chartDescription,
-      fakeFileName,
-      fakeFileLink
+      fileName
     );
 
     window.location.href = '/charts.html';
