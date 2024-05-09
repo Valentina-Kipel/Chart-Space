@@ -12,21 +12,45 @@ function initMainPage() {
   initSignOutButton();
 }
 
+function isSignInPage() {
+  return /sign-in\.html/.test(window.location.href);
+}
+
+function isSignUpPage() {
+  return /sign-up\.html/.test(window.location.href);
+}
+
+function isChartsPage() {
+  return /charts\.html/.test(window.location.href);
+}
+
+function isAddChartPage() {
+  return /add-chart\.html/.test(window.location.href);
+}
+
+function isChartPage() {
+  return /chart\.html/.test(window.location.href) && !isAddChartPage();
+}
+
+function isNotFoundPage() {
+  return /404\.html/.test(window.location.href);
+}
+
 async function initApplication() {
   setAuthChecker();
-  if (/sign-in\.html/.test(window.location.href)) {
+  if (isSignInPage()) {
     initSignInPage();
-  } else if (/sign-up\.html/.test(window.location.href)) {
+  } else if (isSignUpPage()) {
     initSignUpPage();
-  } else if (/charts\.html/.test(window.location.href)) {
+  } else if (isChartsPage()) {
     await initChartsPage();
-  } else if (/chart\.html/.test(window.location.href)) {
+  } else if (isChartPage()) {
     await initChartPage()
-  } else if (/add-chart\.html/.test(window.location.href)) {
+  } else if (isAddChartPage()) {
     await initAddChartPage();
-  } else if (/404\.html/.test(window.location.href)) {
+  } else if (isNotFoundPage()) {
     // dummy actions
-  }  else {
+  } else {
     initMainPage();
   }
 }
