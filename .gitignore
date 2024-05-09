@@ -11,7 +11,7 @@ firebase-debug.*.log*
 .firebase/
 
 *.iml
-.idea
+.idea/
 
 # Firebase config
 
