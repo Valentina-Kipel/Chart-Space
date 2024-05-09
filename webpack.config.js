@@ -22,6 +22,10 @@ module.exports = {
       filename: 'index.html'
     }),
     new HtmlWebpackPlugin({
+      template: './src/404.html',
+      filename: '404.html'
+    }),
+    new HtmlWebpackPlugin({
       template: './src/sign-up.html',
       filename: 'sign-up.html'
     }),
@@ -32,6 +36,10 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/charts.html',
       filename: 'charts.html'
+    }),
+    new HtmlWebpackPlugin({
+      template: './src/chart.html',
+      filename: 'chart.html'
     }),
     new HtmlWebpackPlugin({
       template: './src/add-chart.html',

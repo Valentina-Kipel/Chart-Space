@@ -1,6 +1,7 @@
 import { getApplicationFirestore } from '../config/firebase';
 import { collection, doc, query, orderBy, getDocs, getDoc, setDoc, deleteDoc } from 'firebase/firestore';
 import { v4 as uuidV4 } from 'uuid';
+import { getCurrentUserId } from './auth';
 
 export function getDates(x) {
   return {
@@ -16,7 +17,7 @@ export function getUserCollection() {
 
 export function getCurrentUserRef() {
   const userCollection = getUserCollection();
-  return doc(userCollection, localStorage.getItem('appUserId') ?? '');
+  return doc(userCollection, getCurrentUserId() ?? '');
 }
 
 export function getChartDocsCollection() {

@@ -1,5 +1,6 @@
-import {createChart, deleteChart, getCharts} from '../services/firestore';
-import {uploadCsv} from "../services/storage";
+import {createChart, deleteChart, getChart, getCharts} from '../services/firestore';
+import {downloadCsv, uploadCsv} from "../services/storage";
+import { getCurrentUserId } from '../services/auth';
 
 export async function loadCharts() {
   const tableBody = document.getElementById('chartListBody');
@@ -17,7 +18,12 @@ export async function loadCharts() {
 
     let td3 = document.createElement('td');
     td3.className = "text-center";
-    td3.textContent = "Link to view";
+    let chartLink = document.createElement('a');
+    chartLink.setAttribute('href', `chart.html?id=${doc.id}`);
+    chartLink.setAttribute('class', "btn btn-small btn-primary");
+    let textNode = document.createTextNode("View Chart");
+    chartLink.appendChild(textNode);
+    td3.appendChild(chartLink);
 
     let td4 = document.createElement('td');
     td4.textContent = doc.createdAt.toISOString();
@@ -42,8 +48,34 @@ export async function loadCharts() {
   });
 }
 
-export async function initGetChartsPage() {
+export async function loadChart() {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const chartId = urlParams.get('id');
+  if (!chartId) {
+    window.location.href = '/404.html';
+    return;
+  }
+
+  const chartDoc = await getChart(chartId);
+  if (!chartDoc) {
+    window.location.href = '/404.html';
+    return;
+  }
+
+  const chartCsv = await downloadCsv(getCurrentUserId(), chartDoc.fileName);
+  if (!chartCsv) {
+    window.location.href = '/404.html';
+    return;
+  }
+}
+
+export async function initChartsPage() {
   await loadCharts();
+}
+
+export async function initChartPage() {
+  await loadChart();
 }
 
 export function initAddChartPage() {
@@ -63,7 +95,7 @@ export function initAddChartPage() {
       return;
     }
 
-    const fileName = await uploadCsv(localStorage.getItem('appUserId'), csvFile);
+    const fileName = await uploadCsv(getCurrentUserId(), csvFile);
     await createChart(
       chartName,
       chartType,

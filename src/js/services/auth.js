@@ -6,13 +6,17 @@ import {
 } from 'firebase/auth';
 import { isLoginPage } from '../view/auth';
 
+export function getCurrentUserId() {
+  return localStorage.getItem('appUserId');
+}
+
 export function setAuthChecker() {
   const auth = getApplicationAuth();
   onAuthStateChanged(auth, (authUser) => {
     if (!authUser && !isLoginPage()) {
       window.location.href = '/sign-in.html';
     } else if (authUser) {
-      if (!localStorage.getItem('appUserId')) {
+      if (!getCurrentUserId()) {
         localStorage.setItem('appUserId', authUser.uid)
       }
     }
