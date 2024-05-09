@@ -1,10 +1,6 @@
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  onAuthStateChanged,
-  signOut
-} from 'firebase/auth';
-import { getApplicationAuth } from './config/firebase';
+import { signOut } from 'firebase/auth';
+import { getApplicationAuth } from '../config/firebase';
+import { signUp, signIn } from '../services/auth';
 
 export function isLoginPage() {
   return /sign-in\.html$/.test(window.location.href)
@@ -23,41 +19,6 @@ export function cleanError() {
   document.getElementById('errorContainer').innerHTML = '';
 }
 
-export function setAuthChecker() {
-  const auth = getApplicationAuth();
-  onAuthStateChanged(auth, (authUser) => {
-    if (!authUser && !isLoginPage()) {
-      window.location.href = '/sign-in.html';
-    } else if (authUser) {
-      if (!localStorage.getItem('appUserId')) {
-        localStorage.setItem('appUserId', authUser.uid)
-      }
-    }
-  });
-}
-
-export async function signUp(email, password) {
-  try {
-    cleanError();
-    const auth = getApplicationAuth();
-    await createUserWithEmailAndPassword(auth, email, password);
-    window.location.href = '/index.html';
-  } catch (e) {
-    addError(e.message);
-  }
-}
-
-export async function signIn(email, password) {
-  try {
-    cleanError();
-    const auth = getApplicationAuth();
-    await signInWithEmailAndPassword(auth, email, password);
-    window.location.href = '/index.html';
-  } catch (e) {
-    addError(e.message);
-  }
-}
-
 export function initSignUpPage() {
   const form = document.getElementById('signUpForm');
 
@@ -72,7 +33,7 @@ export function initSignUpPage() {
       return;
     }
 
-    await signUp(userEmail, userPassword);
+    await signUp(userEmail, userPassword, cleanError, addError);
   });
 }
 
@@ -90,7 +51,7 @@ export function initSignInPage() {
       return;
     }
 
-    await signIn(userEmail, userPassword);
+    await signIn(userEmail, userPassword, cleanError, addError);
   });
 }
 

@@ -1,11 +1,11 @@
 import 'bootstrap/dist/js/bootstrap.bundle.min';
+import { setAuthChecker } from './services/auth';
 import {
   initSignInPage,
   initSignOutButton,
-  initSignUpPage,
-  setAuthChecker
-} from './auth';
-import {initAddChartPage, initGetChartsPage} from './charts';
+  initSignUpPage
+} from './view/auth';
+import {initAddChartPage, initGetChartsPage} from './view/charts';
 import '../scss/styles.scss';
 
 function initMainPage() {
@@ -14,7 +14,6 @@ function initMainPage() {
 
 async function initApplication() {
   setAuthChecker();
-
   if (/sign-in\.html/.test(window.location.href)) {
     initSignInPage();
   } else if (/sign-up\.html/.test(window.location.href)) {
@@ -28,4 +27,4 @@ async function initApplication() {
   }
 }
 
-initApplication();
+initApplication().then(() => {});

@@ -1,19 +1,10 @@
-import { createChart, getCharts } from './services/firestore';
+import {createChart, deleteChart, getCharts} from '../services/firestore';
 
-export async function initGetChartsPage() {
+export async function loadCharts() {
   const tableBody = document.getElementById('chartListBody');
   const docs = await getCharts();
   docs.forEach((doc) => {
-    // create a table row element ('tr')
     let tr = document.createElement('tr');
-
-    // create each cell in the row ('th' and 'td')
-    let th = document.createElement('th');
-    let checkBox = document.createElement('input');
-    checkBox.setAttribute('type', 'checkbox');
-    checkBox.setAttribute('aria-label', 'Checkbox');
-    th.setAttribute('scope', 'row');
-    th.appendChild(checkBox);
 
     let td1 = document.createElement('td');
     td1.className = "tm-product-name";
@@ -31,21 +22,27 @@ export async function initGetChartsPage() {
     td4.textContent = doc.createdAt.toISOString();
 
     let td5 = document.createElement('td');
-    let i = document.createElement('i');
-    i.className = "fas fa-trash-alt tm-trash-icon";
-    td5.appendChild(i);
+    let deleteButton = document.createElement('button');
+    deleteButton.innerHTML = 'Delete';
+    deleteButton.addEventListener('click', async () => {
+      await deleteChart(doc.id);
+      tableBody.innerHTML = '';
+      await loadCharts();
+    });
+    td5.appendChild(deleteButton);
 
-    // append all td's to the tr
-    tr.appendChild(th);
     tr.appendChild(td1);
     tr.appendChild(td2);
     tr.appendChild(td3);
     tr.appendChild(td4);
     tr.appendChild(td5);
 
-    // append the 'tr' to the table body
     tableBody.appendChild(tr);
   });
+}
+
+export async function initGetChartsPage() {
+  await loadCharts();
 }
 
 export function initAddChartPage() {
