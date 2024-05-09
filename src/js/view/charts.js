@@ -1,5 +1,6 @@
-import {createChart, deleteChart, getChart, getCharts} from '../services/firestore';
-import {downloadCsv, uploadCsv} from "../services/storage";
+import Papa from 'papaparse';
+import { createChart, deleteChart, getChart, getCharts } from '../services/firestore';
+import { downloadCsv, uploadCsv } from "../services/storage";
 import { getCurrentUserId } from '../services/auth';
 
 export async function loadCharts() {
@@ -48,6 +49,18 @@ export async function loadCharts() {
   });
 }
 
+export function parseCsvFromArrayBuffer(arrayBuffer) {
+  const textDecoder = new TextDecoder('utf-8');
+  const csvString = textDecoder.decode(arrayBuffer);
+
+  const parsedData = Papa.parse(csvString, {
+    header: true,
+    dynamicTyping: true
+  });
+
+  return parsedData.data;
+}
+
 export async function loadChart() {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
@@ -68,6 +81,20 @@ export async function loadChart() {
     window.location.href = '/404.html';
     return;
   }
+
+  const csvData = parseCsvFromArrayBuffer(chartCsv);
+
+  const chartName = document.getElementById('chartName');
+  chartName.innerHTML = chartDoc.chartName;
+
+  const chartContent = document.getElementById('chartContent');
+  chartContent.innerHTML = `
+<b>Name</b>: ${chartDoc.chartDescription}<br />
+<b>Description</b>: ${chartDoc.chartDescription}<br />
+<b>Created At</b>: ${chartDoc.createdAt.toISOString()}<br />
+<b>CSV File Name</b>: ${chartDoc.fileName}<br />
+<b>Doc lines</b>: ${csvData.length}<br />
+`
 }
 
 export async function initChartsPage() {
