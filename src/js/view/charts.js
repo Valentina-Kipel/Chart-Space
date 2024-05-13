@@ -1,7 +1,8 @@
 import Papa from 'papaparse';
 import { createChart, deleteChart, getChart, getCharts } from '../services/firestore';
-import { downloadCsv, uploadCsv } from "../services/storage";
+import { downloadCsv, uploadCsv } from '../services/storage';
 import { getCurrentUserId } from '../services/auth';
+import { drawChart } from './draw-chart';
 
 export async function loadCharts() {
   const tableBody = document.getElementById('chartListBody');
@@ -93,8 +94,8 @@ export async function loadChart() {
 <b>Description</b>: ${chartDoc.chartDescription}<br />
 <b>Created At</b>: ${chartDoc.createdAt.toISOString()}<br />
 <b>CSV File Name</b>: ${chartDoc.fileName}<br />
-<b>Doc lines</b>: ${csvData.length}<br />
 `
+  drawChart(chartDoc.chartType, csvData);
 }
 
 export async function initChartsPage() {
