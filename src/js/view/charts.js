@@ -3,6 +3,7 @@ import { createChart, deleteChart, getChart, getCharts } from '../services/fires
 import { downloadCsv, uploadCsv } from '../services/storage';
 import { getCurrentUserId } from '../services/auth';
 import { drawChart } from './draw-chart';
+import {initSignOutButton} from "./auth";
 
 export async function loadCharts() {
   const tableBody = document.getElementById('chartListBody');
@@ -99,14 +100,17 @@ export async function loadChart() {
 }
 
 export async function initChartsPage() {
+  initSignOutButton();
   await loadCharts();
 }
 
 export async function initChartPage() {
+  initSignOutButton();
   await loadChart();
 }
 
 export function initAddChartPage() {
+  initSignOutButton();
   const form = document.getElementById('addChartForm');
 
   form.addEventListener('submit', async function (event) {

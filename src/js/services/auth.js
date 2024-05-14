@@ -10,10 +10,14 @@ export function getCurrentUserId() {
   return localStorage.getItem('appUserId');
 }
 
+function isNotFoundPage() {
+  return /404\.html/.test(window.location.href);
+}
+
 export function setAuthChecker() {
   const auth = getApplicationAuth();
   onAuthStateChanged(auth, (authUser) => {
-    if (!authUser && !isLoginPage()) {
+    if (!authUser && !isLoginPage() && !isNotFoundPage()) {
       window.location.href = '/sign-in.html';
     } else if (authUser) {
       if (!getCurrentUserId()) {
