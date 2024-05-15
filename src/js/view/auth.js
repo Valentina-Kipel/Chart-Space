@@ -60,7 +60,7 @@ export function initSignOutButton() {
   signOutButton.addEventListener('click', async function (event) {
     event.preventDefault();
     const auth = getApplicationAuth();
-    await signOut(auth);
     localStorage.delete('appUserId');
+    await signOut(auth);
   });
 }
