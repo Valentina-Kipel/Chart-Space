@@ -20,9 +20,7 @@ export function setAuthChecker() {
     if (!authUser && !isLoginPage() && !isNotFoundPage()) {
       window.location.href = '/sign-in.html';
     } else if (authUser) {
-      if (!getCurrentUserId()) {
-        localStorage.setItem('appUserId', authUser.uid)
-      }
+      localStorage.setItem('appUserId', authUser.uid);
     }
   });
 }
