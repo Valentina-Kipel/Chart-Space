@@ -121,8 +121,13 @@ body {
   background-image: url(/src/img/dash-bg-02.jpg);
 }
 
-.bg03 {
-  background-image: url(/src/img/dash-bg-03.jpg);
+.hist-home {
+  background-image: url(/src/img/hist.png);
+  width: 15000x; /* Ширина контейнера для изображения */
+  height: 1200px; /* Высота контейнера для изображения */
+  border: 1px solid #ccc; /* Граница контейнера */
+  background-size: cover; /* Масштабирование изображения, чтобы оно занимало весь контейнер */
+  background-position: center; /* Выравнивание изображения по центру контейнера */
 }
 
 a {
@@ -624,3 +629,4 @@ footer {
     top: 107px;
   }
 }
+
